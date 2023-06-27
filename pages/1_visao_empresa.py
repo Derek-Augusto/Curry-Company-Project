@@ -180,9 +180,18 @@ st.sidebar.markdown('# Cury Company')
 st.sidebar.markdown('## Fastest Delivery in Town')
 st.sidebar.markdown('---')
 
+#st.sidebar.markdown('##  Selecione uma data limite')
+#date_slider = st.sidebar.slider ('Até qual valor?', value=pd.to_datetime(2022,4,13), min_value=pd.to_datetime(2022,2,11), max_value=pd.to_datetime(2022,4,6), format='DD-MM-YYYY')
 st.sidebar.markdown('##  Selecione uma data limite')
-date_slider = st.sidebar.slider ('Até qual valor?', value=pd.to_datetime(2022,4,13), min_value=pd.to_datetime(2022,2,11), max_value=pd.to_datetime(2022,4,6), format='DD-MM-YYYY')
-
+date_value = pd.Timestamp(2022, 4, 13)
+date_timestamp = int(date_value.timestamp())
+date_datetime = datetime.datetime.fromtimestamp(date_timestamp)
+date_slider = st.sidebar.slider(
+    "Até qual valor?",
+    value=date_datetime,
+    min_value=datetime.datetime(2022, 2, 11),
+    max_value=datetime.datetime(2022, 4, 6),
+    format='YYYY-MM-DD')
 
 st.header ( date_slider)
 st.sidebar.markdown("""---""")
